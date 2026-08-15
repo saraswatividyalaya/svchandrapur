@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Background Remover - Editor</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #fff;
+      color: #333;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+      border-bottom: 1px solid #eee;
+    }
+    header .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #4a90e2;
+    }
+    header nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #555;
+    }
+    header .auth button {
+      margin-left: 10px;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .login { background: transparent; }
+    .signup { background: #f0f0f0; }
+
+    .toolbar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      padding: 12px;
+      border-bottom: 1px solid #eee;
+      background: #fafafa;
+    }
+    .toolbar button {
+      background: transparent;
+      border: none;
+      font-size: 15px;
+      cursor: pointer;
+      color: #555;
+    }
+    .toolbar .download {
+      background: #0066ff;
+      color: #fff;
+      padding: 8px 18px;
+      border-radius: 20px;
+    }
+
+    .workspace {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 70vh;
+      background: #fff;
+    }
+    canvas {
+      max-width: 80%;
+      max-height: 90%;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">remove<span style="color:#333">bg</span></div>
+    <nav>
+      <a href="#">Uploads</a>
+      <a href="#">Bulk Editing</a>
+      <a href="#">API</a>
+      <a href="#">Integrations</a>
+      <a href="#">Pricing</a>
+    </nav>
+    <div class="auth">
+      <button class="login">Log in</button>
+      <button class="signup">Sign up</button>
+    </div>
+  </header>
+
+  <div class="toolbar">
+    <button>✂ Cutout</button>
+    <button>🖼 Background</button>
+    <button>✨ Effects</button>
+    <button>⚙ Adjust</button>
+    <button>🎨 Design</button>
+    <button class="download" id="downloadBtn">Download ▼</button>
+  </div>
+
+  <div class="workspace">
+    <canvas id="canvas"></canvas>
+  </div>
+
+  <script>
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
+    const downloadBtn = document.getElementById("downloadBtn");
+
+    // Load uploaded image from localStorage
+    const uploadedImg = localStorage.getItem("uploadedImg");
+    if (uploadedImg) {
+      const img = new Image();
+      img.src = uploadedImg;
+      img.onload = () => {
+        canvas.width = img.width;
+        canvas.height = img.height;
+        ctx.drawImage(img, 0, 0);
+
+        // Background remover: remove white & near-white
+        let imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        let data = imageData.data;
+
+        const tolerance = 30; // higher = remove more light colors
+
+        for (let i = 0; i < data.length; i += 4) {
+          const r = data[i];
+          const g = data[i + 1];
+          const b = data[i + 2];
+
+          if (r > 255 - tolerance && g > 255 - tolerance && b > 255 - tolerance) {
+            data[i + 3] = 0; // make transparent
+          }
+        }
+
+        ctx.putImageData(imageData, 0, 0);
+      };
+    }
+
+    // Download PNG
+    downloadBtn.addEventListener("click", () => {
+      const link = document.createElement("a");
+      link.download = "background_removed.png";
+      link.href = canvas.toDataURL("image/png");
+      link.click();
+    });
+  </script>
+</body>
+</html>
+
