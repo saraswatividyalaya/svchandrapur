@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Saraswati Vidyalaya & Jr. College - Chandrapur</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@400;700&family=Montserrat:wght@700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+    body {
+      line-height: 1.6;
+      background: linear-gradient(135deg, #f0f4f8, #e6ecf5);
+      color: #333;
+      overflow-x: hidden;
+    }
+
+    /* College Top Header */
+    .college-header {
+      background: #f7f8f8;
+      border-bottom: 2px solid hwb(225 0% 97% / 0.971);
+      padding: 5px 0;
+      text-align: center;
+    }
+    .college-header img {
+      max-height: 110px;
+      width: auto;
+      height: auto;
+      max-width: 110%;
+    }
+    /* Header */
+    header {
+      background: linear-gradient(135deg, #1e3c72, #0A6C74);
+      color: white;
+      padding: 2px 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+    .logo img {
+      width: 40px;
+      height: 40px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid #ffca28;
+      margin-right: 8px;
+      box-shadow: 0 0 10px rgba(255,202,40,0.6);
+      transition: all 0.3s ease;
+      animation: logoPulse 2s infinite;
+    }
+    @keyframes logoPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    .logo img:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 15px rgba(255,202,40,0.8);
+    }
+    header h1 {
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    header h1 .subheading {
+      font-size: 12px;
+      font-weight: 300;
+      opacity: 0.9;
+      text-align: center;
+    }
+    /* Nav + Button wrapper */
+    .nav-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+      min-width: 0;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 0px;
+      margin: 0;
+      padding: 0;
+      align-items: center;
+    }
+    nav > ul > li:not(:last-child)::after {
+      content: "|";
+      color: #ffca28;
+      margin-left: 0px;
+      font-weight: 400;
+    }
+    nav ul li .dropdown-menu li::after {
+      content: none !important;
+    }
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 400;
+      font-size: 14px;
+      transition: all 0.3s ease;
+      padding: 8px 12px;
+      display: inline-block;
+      border-radius: 6px;
+      position: relative;
+      font-family: 'Open Sans', sans-serif;
+    }
+    nav ul li a:hover {
+      color: #ffca28;
+      background: rgba(255,202,40,0.2);
+      transform: translateY(-2px);
+    }
+    .menu-toggle {
+      display: none;
+      font-size: 24px;
+      cursor: pointer;
+      padding: 10px;
+      color: #ffca28;
+      background: rgba(255,255,255,0.1);
+      border: none;
+      border-radius: 6px;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 10px rgba(255,202,40,0.4);
+    }
+    .menu-toggle:hover {
+      transform: scale(1.1);
+      background: rgba(255,202,40,0.3);
+      box-shadow: 0 0 15px rgba(255,202,40,0.6);
+    }
+    .online-admission-btn {
+      background: linear-gradient(135deg, #e74c3c, #f39c12);
+      color: white;
+      padding: 8px 18px;
+      border-radius: 20px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      display: inline-block;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(243,156,18,0.5);
+      text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+      white-space: nowrap;
+      min-width: 150px;
+      max-width: 180px;
+      font-family: 'Open Sans', sans-serif;
+      position: relative;
+      overflow: hidden;
+    }
+    .online-admission-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s;
+    }
+    .online-admission-btn:hover::before {
+      left: 100%;
+    }
+    .online-admission-btn:hover {
+      background: linear-gradient(135deg, #ffca28, #f1c40f);
+      transform: translateY(-2px) scale(1.05);
+      box-shadow: 0 6px 18px rgba(255,202,40,0.7);
+    }
+    
+    /* Dropdown Styles */
+    nav ul li.dropdown {
+      position: relative;
+    }
+    nav ul li .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: linear-gradient(135deg, #1e3c72, #0A6C74);
+      list-style: none;
+      padding: 8px 0;
+      margin: 0;
+      border-radius: 6px;
+      min-width: 160px;
+      z-index: 999;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    }
+    nav ul li .dropdown-menu li {
+      padding: 0;
+    }
+    nav ul li .dropdown-menu li a {
+      color: white;
+      font-size: 14px;
+      font-weight: 400;
+      display: block;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      padding: 8px 12px;
+    }
+    nav ul li .dropdown-menu li a:hover {
+      background: #ffca28;
+      color: #1e3c72;
+    }
+    nav ul li.dropdown > a:hover + .dropdown-menu,
+    nav ul li.dropdown:hover .dropdown-menu {
+      display: block;
+    }
+    /* About Banner - Smaller height, smaller "About Us" text */
+    .about-banner {
+      position: relative;
+      width: 100vw;
+      margin-left: calc(-50vw + 50%);
+      margin-right: calc(-50vw + 50%);
+      height: 2in; /* Kept half size as before */
+      margin-bottom: 40px; /* Reduced bottom margin for tighter layout */
+      overflow: hidden;
+    }
+    .about-banner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: brightness(0.85);
+    }
+    .about-banner h2 {
+      position: absolute;
+      bottom: 25px;
+      left: 40px;
+      font-size: 30px; /* Reduced from 64px to make it smaller */
+      color: #f1f2f3;
+      font-weight: 900;
+      font-family: 'Montserrat', sans-serif;
+      text-transform: none;
+      text-shadow: 4px 4px 8px rgba(0,0,0,0.5);
+      letter-spacing: 1.5px;
+      z-index: 2;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 992px) {
+      .about-banner {
+        height: 1.75in;
+      }
+      .about-banner h2 {
+        font-size: 42px;
+        bottom: 20px;
+        left: 30px;
+      }
+    }
+    @media (max-width: 768px) {
+      .about-banner {
+        height: 1.5in;
+      }
+      .about-banner h2 {
+        font-size: 36px;
+        bottom: 15px;
+        left: 20px;
+      }
+    }
+    @media (max-width: 480px) {
+      .about-banner {
+        height: 1.25in;
+      }
+      .about-banner h2 {
+        font-size: 32px;
+        bottom: 12px;
+        left: 15px;
+      }
+    }
+    
+    /* Contact Us Section */
+    .contact-us-section {
+      padding: 80px 20px;
+      background: linear-gradient(135deg, #e8f4f8, #f0f4f8);
+      position: relative;
+      overflow: hidden;
+    }
+    .contact-us-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #ffca28, transparent);
+      opacity: 0.5;
+    }
+    .contact-us-section h2 {
+      font-size: 42px;
+      color: #1e3c72;
+      margin-bottom: 20px;
+      font-weight: 700;
+      font-family: 'Playfair Display', serif;
+      text-align: center;
+      position: relative;
+      display: inline-block;
+      animation: fadeInUp 1s ease-out;
+    }
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .contact-us-section h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(135deg, #ffca28, #f39c12);
+      border-radius: 2px;
+    }
+    .contact-us-section .subtitle {
+      font-size: 18px;
+      color: #0A6C74;
+      margin-bottom: 60px;
+      text-align: center;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      animation: fadeInUp 1s ease-out 0.2s both;
+    }
+    .contact-us-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .contact-form {
+      background: white;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .contact-form::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(135deg, #ffca28, #f39c12);
+    }
+    .contact-form:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 50px rgba(0,0,0,0.15);
+    }
+    .contact-form h3 {
+      font-size: 24px;
+      color: #1e3c72;
+      margin-bottom: 25px;
+      font-weight: 600;
+      font-family: 'Montserrat', sans-serif;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      color: #0A6C74;
+      font-weight: 500;
+    }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 15px;
+      border: 2px solid #e6ecf5;
+      border-radius: 10px;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      font-family: 'Open Sans', sans-serif;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #ffca28;
+      box-shadow: 0 0 10px rgba(255,202,40,0.3);
+    }
+    .form-group textarea {
+      height: 120px;
+      resize: vertical;
+    }
+    .submit-btn {
+      background: linear-gradient(135deg, #1e3c72, #0A6C74);
+      color: white;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 30px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 100%;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      box-shadow: 0 4px 15px rgba(30,60,114,0.3);
+      position: relative;
+      overflow: hidden;
+    }
+    .submit-btn::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background: rgba(255,255,255,0.2);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: width 0.6s, height 0.6s;
+    }
+    .submit-btn:hover::before {
+      width: 300px;
+      height: 300px;
+    }
+    .submit-btn:hover {
+      background: linear-gradient(135deg, #ffca28, #f39c12);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255,202,40,0.4);
+    }
+    .contact-info-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    .info-card {
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+      transition: all 0.3s ease;
+      border-left: 5px solid #ffca28;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .info-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(255,202,40,0.05), transparent);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .info-card:hover {
+      transform: translateX(10px) scale(1.02);
+      box-shadow: 0 10px 35px rgba(0,0,0,0.12);
+    }
+    .info-card:hover::before {
+      opacity: 1;
+    }
+    .info-card .icon {
+      font-size: 24px;
+      color: #ffca28;
+      flex-shrink: 0;
+      animation: iconBounce 2s infinite;
+    }
+    @keyframes iconBounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(-5px); }
+      60% { transform: translateY(-3px); }
+    }
+    .info-card h4 {
+      font-size: 16px;
+      background: linear-gradient(135deg, #1e3c72, #ffca28, #0A6C74);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 5px;
+      font-weight: 600;
+      flex-shrink: 0;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+      animation: gradientShift 3s ease-in-out infinite;
+    }
+    @keyframes gradientShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+    .info-card h4 {
+      background-size: 200% 200%;
+    }
+    .info-card p,
+    .info-card a {
+      color: #0A6C74;
+      text-decoration: none;
+      font-size: 14px;
+      line-height: 1.4;
+      margin: 0;
+      font-weight: 500;
+      text-shadow: 0 0.5px 1px rgba(255,202,40,0.3);
+      transition: all 0.3s ease;
+    }
+    .info-card p:hover,
+    .info-card a:hover {
+      color: #ffca28;
+      text-shadow: 0 1px 3px rgba(255,202,40,0.5);
+      transform: translateX(5px);
+    }
+
+    /* Success / Error Message Style */
+    .form-status {
+      margin-top: 20px;
+      padding: 15px 20px;
+      border-radius: 10px;
+      text-align: center;
+      font-weight: 600;
+      font-size: 18px;
+      display: none;
+    }
+    .form-status.success {
+      background: linear-gradient(135deg, #d4edda, #c3e6cb);
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
+    .form-status.error {
+      background: linear-gradient(135deg, #f8d7da, #f5c6cb);
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+    }
+
+    /* Gallery, Contact Info, Footer - unchanged */
+    .gallery-section {
+      padding: 60px 20px;
+      background: linear-gradient(135deg, #ffffff, #f0f4f8);
+      text-align: center;
+    }
+    .gallery-section h2 {
+      font-size: 36px;
+      color: #1e3c72;
+      margin-bottom: 40px;
+      font-weight: 700;
+      font-family: 'Playfair Display', serif;
+    }
+    .gallery-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 15px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .gallery-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    .gallery-img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+    }
+    .contact-info {
+      background: linear-gradient(135deg, #1e3c72, #0A6C74);
+      color: white;
+      padding: 60px 20px;
+      margin-top: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    .contact-info::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="white" opacity="0.05"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+      pointer-events: none;
+    }
+    .contact-container {
+      display: flex;
+      justify-content: space-between;
+      gap: 30px;
+      max-width: 1100px;
+      margin: auto;
+      flex-wrap: wrap;
+    }
+    .contact-box {
+      flex: 1;
+      min-width: 250px;
+      padding: 20px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 15px;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+    .contact-box:hover {
+      background: rgba(255,202,40,0.1);
+      transform: translateY(-3px);
+    }
+    .contact-box h3 {
+      margin-bottom: 20px;
+      font-size: 22px;
+      font-weight: 600;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    }
+    .contact-box ul {
+      list-style: none;
+      padding: 0;
+    }
+    .contact-box ul li {
+      margin-bottom: 0;
+      position: relative;
+      font-size: 16px;
+      transition: all 0.3s ease;
+    }
+    .contact-box ul li:hover {
+      color: #ffca28;
+    }
+    .contact-box a {
+      text-decoration: none;
+      color: white;
+      padding: 10px 15px;
+      display: inline-block;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+    .contact-box a:hover {
+      color: #f39c12;
+      background: rgba(255,202,40,0.2);
+    }
+    .contact-box ul li .footer-submenu {
+      list-style: none;
+      margin-top: 10px;
+      margin-left: 20px;
+      padding: 10px;
+      display: none;
+      background: rgba(255,255,255,0.1);
+      border-radius: 8px;
+    }
+    .contact-box ul li:hover .footer-submenu {
+      display: block;
+    }
+    .contact-box ul li .footer-submenu li {
+      margin: 10px 0;
+    }
+    .contact-box ul li .footer-submenu a {
+      font-size: 15px;
+      color: #ddd;
+      padding: 8px 12px;
+    }
+    .contact-box ul li .footer-submenu a:hover {
+      color: #f39c12;
+      background: rgba(243,156,18,0.2);
+    }
+    .map-container iframe {
+      width: 100%;
+      height: 300px;
+      border: 0;
+      border-radius: 15px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease;
+    }
+    .map-container iframe:hover {
+      transform: scale(1.02);
+    }
+    footer {
+      background: linear-gradient(135deg, #0c0808, #0A6C74);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+    }
+    footer .copyright {
+      text-align: center;
+      margin: 5px 0;
+      font-size: 14px;
+      font-weight: 300;
+    }
+    /* Responsive */
+    @media (max-width: 1366px) {
+      .nav-wrapper { flex-wrap: wrap; justify-content: center; }
+      .online-admission-btn { margin-top: 10px; order: 1; }
+    }
+    @media (max-width: 992px) {
+      .contact-container { flex-direction: column; }
+      .contact-us-container { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      header { flex-direction: column; padding: 10px; text-align: center; }
+      .logo { margin-bottom: 8px; }
+      .logo img { width: 50px; height: 50px; }
+      nav ul { display: none; flex-direction: column; background: linear-gradient(135deg, #1e3c72, #2a5298); position: absolute; top: 100%; left: 0; width: 100%; padding: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); border-radius: 0 0 10px 10px; z-index: 1001; }
+      nav ul.active { display: flex; }
+      .menu-toggle { display: block; margin-left: auto; }
+      .nav-wrapper { flex-direction: column; width: 100%; align-items: center; }
+      .online-admission-btn { margin-top: 5px; width: 100%; max-width: 180px; margin-left: auto; margin-right: auto; }
+      .contact-form { padding: 30px 20px; }
+      .info-card { flex-direction: column; text-align: center; }
+    }
+    @media (max-width: 480px) {
+      .contact-form { padding: 25px 15px; }
+      .info-card p, .info-card a { font-size: 13px; }
+    }
+  </style>
+</head>
+<body>
+
+
+    <!-- Header will load here -->
+  <div id="header"></div>
+
+  <!-- ====================== PAGE CONTENT START ====================== -->
+  <!-- About Us Section - Now directly touching the header -->
+  <section class="about-section">
+    <div class="about-container">
+      <div class="about-banner">
+        <img src="Banner1.jpg" alt="School Building Banner">
+        <h2>Contact us</h2>
+      </div>
+
+ <!-- Contact Us Section -->
+<section class="contact-us-section" id="contact-us">
+  <h2>Get In Touch</h2>
+  <p class="subtitle">We'd love to hear from you. Reach out to us for inquiries, admissions, or just to say hello. Our team is here to assist you every step of the way.</p>
+  
+  <div class="contact-us-container">
+    <div class="contact-form">
+      <h3>Send Us a Message</h3>
+      <form id="contactForm" action="https://formspree.io/f/xeajzylq" method="POST">
+        <input type="hidden" name="_subject" value="New Message from School Website Contact Form">
+
+        <div class="form-group">
+          <label for="name">Your Name</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Your Email</label>
+          <input type="email" id="email" name="_replyto" required>
+        </div>
+
+        <!-- NEW: Mobile Number Input Field -->
+        <div class="form-group">
+          <label for="phone">Mobile Number</label>
+          <input type="tel" id="phone" name="phone" placeholder="+91 XXXXX XXXXX" required>
+        </div>
+
+        <div class="form-group">
+          <label for="subject">Subject</label>
+          <input type="text" id="subject" name="subject" required>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" required></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">Send Message</button>
+
+        <!-- Success / Error Message -->
+        <div id="formStatus" class="form-status"></div>
+      </form>
+    </div>
+    
+    <div class="contact-info-cards">
+      <div class="info-card">
+        <span class="icon">📍</span>
+        <h4>Our Address</h4>
+        <p>Saraswati Vidyalaya & Jr. College<br>At-Bhivapur Ward, Dist-Chandrapur<br>Pin code: 442403, Maharashtra (India)</p>
+      </div>
+
+      <div class="info-card">
+        <span class="icon">📞</span>
+        <h4>Phone</h4>
+        <p><a href="tel:+919822694598">+91 9822694598</a></p>
+      </div>
+
+      <!-- NEW: Mobile Number Info Card -->
+      <div class="info-card">
+        <span class="icon">📱</span>
+        <h4>Mobile</h4>
+        <p><a href="tel:+918668587156">+91 8668587156</a></p>
+      </div>
+
+      <div class="info-card">
+        <span class="icon">📧</span>
+        <h4>Email</h4>
+        <p><a href="mailto:saraswatividyalaya84@gmail.com">saraswatividyalaya84@gmail.com</a></p>
+      </div>
+
+      <div class="info-card">
+        <span class="icon">🕒</span>
+        <h4>Office Hours</h4>
+        <p>Monday - Friday: 12:00 PM - 5:00 PM<br>Saturday: 07:30 AM - 1:00 PM<br>Sunday: Closed</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+  
+
+  <!-- ====================== PAGE CONTENT END ====================== -->
+
+  <!-- Footer will load here -->
+  <div id="footer"></div>
+
+  <!-- Include Script -->
+  <script src="js/include.js"></script>
+
+  <!-- JavaScript -->
+  <script>
+    // Mobile menu toggle
+    function toggleMenu() {
+      const menu = document.getElementById("menu");
+      menu.classList.toggle("active");
+      const toggle = document.querySelector(".menu-toggle");
+      const isExpanded = menu.classList.contains("active");
+      toggle.setAttribute("aria-expanded", isExpanded);
+    }
+
+    // Close menu on link click (mobile)
+    document.querySelectorAll('nav ul li a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth <= 768) {
+          document.getElementById("menu").classList.remove("active");
+          document.querySelector(".menu-toggle").setAttribute("aria-expanded", "false");
+        }
+      });
+    });
+
+    // Form submission with AJAX (no page redirect)
+    const form = document.getElementById('contactForm');
+    const statusDiv = document.getElementById('formStatus');
+    const submitBtn = form.querySelector('.submit-btn');
+
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      submitBtn.textContent = 'Sending...';
+      submitBtn.disabled = true;
+      statusDiv.style.display = 'none';
+      statusDiv.className = 'form-status';
+
+      const formData = new FormData(form);
+
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+
+        if (response.ok) {
+          statusDiv.textContent = 'Thank you! Your message has been sent successfully. We will contact you soon.';
+          statusDiv.classList.add('success');
+          form.reset();
+        } else {
+          statusDiv.textContent = 'Oops! Something went wrong. Please try again later.';
+          statusDiv.classList.add('error');
+        }
+      } catch (error) {
+        statusDiv.textContent = 'No internet connection. Please check and try again.';
+        statusDiv.classList.add('error');
+      }
+
+      statusDiv.style.display = 'block';
+      submitBtn.textContent = 'Send Message';
+      submitBtn.disabled = false;
+    });
+
+    // Animation observer
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animationPlayState = 'running';
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('.info-card, .contact-box').forEach(el => {
+      el.style.animationPlayState = 'paused';
+      el.style.animation = 'fadeInUp 0.8s ease-out forwards';
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>
